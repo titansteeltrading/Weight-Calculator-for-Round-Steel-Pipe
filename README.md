@@ -78,4 +78,11 @@ Visit us at: [https://titansteelco.ro/](https://titansteelco.ro/)
 
 ## 📄 License
 
-This project is open-source and free to use for personal and commercial purposes.
+This project is licensed under the GNU General Public License v3.0.
+
+You are free to use, modify, and distribute this code, provided that any derivative work is also released under the same GPL-3.0 license.
+
+© 2026 Titan Steel Trading Company – https://titansteelco.ro
+
+For more information, see the LICENSE file or visit:
+https://www.gnu.org/licenses/gpl-3.0.html
