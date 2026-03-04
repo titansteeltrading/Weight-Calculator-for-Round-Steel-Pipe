@@ -70,7 +70,7 @@ Looking for other steel weight calculators? We have a full collection available 
 
 ## 🏭 About
 
-Developed and maintained by **[Titan Steel Co](https://titansteelco.ro/)** — suppliers of high-quality steel products including pipes, tubes, profiles, and sheets.
+Developed and maintained by **[Titan Steel Trading Company](https://titansteelco.ro/)** — suppliers of high-quality steel products including pipes, tubes, profiles, and sheets.
 
 Visit us at: [https://titansteelco.ro/](https://titansteelco.ro/)
 
