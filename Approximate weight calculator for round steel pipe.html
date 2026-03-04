@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Round Steel Pipe Weight Calculator – Titan Steel Co</title>
+  <meta name="description" content="Free calculator for approximate weight of round carbon steel or stainless steel pipes. Calculate weight per linear meter and total weight.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #1a1a2e;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+
+    :root{
+      --ts-card:#ffffff; 
+      --ts-ink:#111827; 
+      --ts-accent:#f3f4f6;
+    }
+
+    .ts-wrap-full{
+      max-width:1100px;
+      margin:32px auto 32px auto;
+      padding:0 16px;
+      box-sizing:border-box;
+      text-align:center;
+      color:#fff;
+      font-family:'Montserrat', Arial, sans-serif;
+      display:flow-root;
+      clear:both;
+    }
+
+    .ts-title{
+      color:#ffffff;
+      font-weight:700;
+      margin:0 0 8px 0;
+      font-size:20px;
+    }
+
+    .ts-sub{
+      color:#d1d5db;
+      font-size:14px;
+      margin:0 auto 12px;
+      max-width:920px;
+    }
+
+    .ts-icon-pipe{
+      margin:6px auto 16px;
+      display:block;
+    }
+
+    .ts-shell{
+      background:var(--ts-card);
+      border-radius:10px;
+      padding:20px;
+      box-shadow:0 0 24px rgba(0,0,0,0.25);
+      text-align:left;
+    }
+
+    .ts-calc-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:20px 34px;
+    }
+
+    @media (max-width:768px){
+      .ts-calc-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .ts-field-group{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      margin-bottom:12px;
+    }
+
+    .ts-label{
+      font-size:14px;
+      font-weight:600;
+      color:var(--ts-ink);
+    }
+
+    .ts-label span{
+      font-weight:400;
+      font-size:13px;
+      color:#6b7280;
+    }
+
+    .ts-input,
+    .ts-select{
+      width:100%;
+      box-sizing:border-box;
+      border-radius:6px;
+      border:1px solid #d1d5db;
+      padding:8px 10px;
+      font-size:14px;
+      font-family:'Montserrat', Arial, sans-serif;
+      color:var(--ts-ink);
+    }
+
+    .ts-input:focus,
+    .ts-select:focus{
+      outline:none;
+      border-color:#b22222;
+      box-shadow:0 0 0 1px rgba(178,34,34,0.25);
+    }
+
+    .ts-actions{
+      margin-top:12px;
+      margin-bottom:12px;
+      display:block;
+    }
+
+    .ts-btn{
+      display:inline-block;
+      border-radius:999px;
+      border:none;
+      padding:9px 18px;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      font-family:'Montserrat', Arial, sans-serif;
+      background:#b22222;
+      color:#ffffff;
+      transition:0.15s ease;
+    }
+
+    .ts-btn:hover{
+      opacity:0.92;
+      box-shadow:0 6px 14px rgba(0,0,0,0.25);
+    }
+
+    .ts-results{
+      padding:10px 12px;
+      border-radius:8px;
+      background:var(--ts-accent);
+      border:1px solid #e5e7eb;
+      font-size:14px;
+      color:var(--ts-ink);
+    }
+
+    .ts-results-row{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:4px;
+    }
+
+    .ts-results-row:last-child{
+      margin-bottom:0;
+    }
+
+    .ts-results-label{ font-weight:600; }
+
+    .ts-note{
+      display:block;
+      color:#374151 !important;
+      font-size:13px;
+      line-height:1.6;
+      margin-top:14px;
+      padding-top:10px;
+      border-top:1px solid #e5e7eb;
+    }
+
+    /* Footer link */
+    .ts-footer {
+      text-align: center;
+      padding: 20px 0 32px;
+      color: #9ca3af;
+      font-size: 13px;
+    }
+
+    .ts-footer a {
+      color: #b22222;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .ts-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .ts-out-spacer{
+      height:32px;
+      width:100%;
+    }
+  </style>
+</head>
+<body>
+
+<section class="ts-wrap-full">
+  <h2 class="ts-title">Approximate weight calculator for round steel pipe</h2>
+
+  <p class="ts-sub">
+    Calculate the weight per linear meter and the total weight for round carbon steel or stainless steel pipes.
+  </p>
+
+  <!-- SVG icon round pipe -->
+  <svg class="ts-icon-pipe" width="42" height="42" viewBox="0 0 24 24" fill="none" 
+       stroke="#b22222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"></circle>
+    <circle cx="12" cy="12" r="4"></circle>
+  </svg>
+
+  <div class="ts-shell" role="region" aria-label="Round pipe weight calculator">
+    <div class="ts-calc-grid">
+
+      <!-- Left column -->
+      <div>
+
+        <div class="ts-field-group">
+          <label class="ts-label">Material type</label>
+          <select id="ts-material" class="ts-select">
+            <option value="carbon" selected>Carbon steel (~7.85 g/cm3)</option>
+            <option value="inox">Stainless steel (~7.93 g/cm3)</option>
+          </select>
+        </div>
+
+        <div class="ts-field-group">
+          <label class="ts-label">Outer diameter D <span>(mm)</span></label>
+          <input id="ts-diametru" class="ts-input" placeholder="e.g. 60.3">
+        </div>
+
+        <div class="ts-field-group">
+          <label class="ts-label">Wall thickness s <span>(mm)</span></label>
+          <input id="ts-grosime" class="ts-input" placeholder="e.g. 3.2">
+        </div>
+
+        <div class="ts-field-group">
+          <label class="ts-label">Length L <span>(m)</span></label>
+          <input id="ts-lungime" class="ts-input" placeholder="e.g. 6">
+        </div>
+
+        <!-- Button -->
+        <div class="ts-actions">
+          <button class="ts-btn" onclick="tsCalcTeavaOtel()">Calculate weight</button>
+        </div>
+
+      </div>
+
+      <!-- Right column -->
+      <div>
+
+        <div class="ts-results">
+          <div class="ts-results-row">
+            <span class="ts-results-label">Linear weight (kg/m):</span>
+            <span id="ts-g-liniara">-</span>
+          </div>
+          <div class="ts-results-row">
+            <span class="ts-results-label">Total weight (kg):</span>
+            <span id="ts-g-totala">-</span>
+          </div>
+        </div>
+
+        <small class="ts-note">
+          Carbon steel C = 0.02466<br>
+          Stainless steel C = 0.02492
+        </small>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="ts-out-spacer" aria-hidden="true"></div>
+
+<!-- Footer with link to all calculators -->
+<div class="ts-footer">
+  Looking for more steel weight calculators? 
+  Visit <a href="https://titansteelco.ro/weight-calculators" target="_blank">titansteelco.ro/weight-calculators</a>
+  for the full collection.<br><br>
+  Developed by <a href="https://titansteelco.ro/" target="_blank">Titan Steel Trading Company</a>
+</div>
+
+<script>
+  function tsCalcTeavaOtel(){
+    var material = document.getElementById('ts-material').value;
+    var D = parseFloat(document.getElementById('ts-diametru').value.replace(',', '.'));
+    var s = parseFloat(document.getElementById('ts-grosime').value.replace(',', '.'));
+    var L = parseFloat(document.getElementById('ts-lungime').value.replace(',', '.'));
+
+    var gLin = document.getElementById('ts-g-liniara');
+    var gTot = document.getElementById('ts-g-totala');
+
+    if(isNaN(D) || isNaN(s) || D <= 0 || s <= 0 || s >= D){
+      gLin.textContent = '-';
+      gTot.textContent = '-';
+      return;
+    }
+
+    if(isNaN(L) || L <= 0){ L = 1; }
+
+    var C = (material === 'carbon') ? 0.02466 : 0.02492;
+
+    var g_liniara = C * (D - s) * s;
+    var g_totala = g_liniara * L;
+
+    g_totala = Math.round(g_totala * 100) / 100;
+
+    gLin.textContent = g_liniara.toFixed(3);
+    gTot.textContent = g_totala.toFixed(2);
+  }
+</script>
+
+</body>
+</html>
